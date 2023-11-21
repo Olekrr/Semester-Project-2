@@ -1,6 +1,4 @@
-//import { baseUrl } from "./baseURL";
-
-const baseUrl = "https://api.noroff.dev/api/v1";
+import { baseUrl } from "./baseUrl.js";
 
 export async function register(username, email, password, avatarUrl) {
   const response = await fetch(`${baseUrl}/auction/auth/register`, {
