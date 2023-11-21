@@ -1,4 +1,4 @@
-import { toggleForms } from "./toggleform.js";
+import { toggleListener } from "./togglelistener.js";
 import { loadModal } from "./loadform.js";
 
-export { toggleForms, loadModal };
+export { toggleListener, loadModal };

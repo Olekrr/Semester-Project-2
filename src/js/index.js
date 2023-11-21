@@ -1,4 +1,12 @@
-import { toggleForms, loadModal } from "./loginmodal/index.js";
+import { toggleListener, loadModal } from "./loginmodal/index.js";
+import {
+  loginFormListener,
+  registerFormListener,
+} from "./api/formlisteners/index.js";
 
-toggleForms();
-loadModal();
+document.addEventListener("DOMContentLoaded", () => {
+  loadModal();
+  toggleListener();
+  loginFormListener();
+  registerFormListener();
+});
