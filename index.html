@@ -13,7 +13,111 @@
       src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
       defer
     ></script>
+    <script type="module" src="src/js/index.js" defer></script>
     <title>Noroff Autions</title>
   </head>
-  <body></body>
+  <body>
+    <div
+      class="modal fade"
+      id="loginRegisterModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Login</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <!-- Login Form -->
+            <div id="loginForm">
+              <form>
+                <div class="form-group">
+                  <label for="loginEmail">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="loginEmail"
+                    placeholder="Enter email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="loginPassword"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="py-3">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
+              <p class="text-center mt-2">
+                <a href="#" id="toggle-link">Need an account? Register</a>
+              </p>
+            </div>
+            <!-- Register Form -->
+            <div id="registerForm" style="display: none">
+              <form>
+                <div class="form-group">
+                  <label for="registerUsername">Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="registerUsername"
+                    placeholder="Username"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="registerEmail">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="registerEmail"
+                    placeholder="Enter email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="registerPassword">Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="registerPassword"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="registerAvatarUrl">Avatar URL</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="registerAvatarUrl"
+                    placeholder="Avatar URL"
+                  />
+                </div>
+                <div class="py-3">
+                  <button type="submit" class="btn btn-primary">
+                    Register
+                  </button>
+                </div>
+              </form>
+              <p class="text-center mt-2">
+                <a href="#" id="toggle-link">Already have an account? Login</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
