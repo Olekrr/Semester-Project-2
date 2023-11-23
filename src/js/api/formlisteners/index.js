@@ -1,2 +1,2 @@
-export { loginFormListener } from "./loginFormListener.js";
-export { registerFormListener } from "./registerFormListener.js";
+export { loginFormListener } from "./loginform.js";
+export { registerFormListener } from "./registerform.js";

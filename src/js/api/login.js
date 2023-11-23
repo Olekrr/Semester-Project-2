@@ -1,4 +1,4 @@
-import { baseUrl } from "./baseUrl.js";
+import { baseUrl } from "./urlbase.js";
 
 export async function login(email, password) {
   const response = await fetch(`${baseUrl}/auction/auth/login`, {
