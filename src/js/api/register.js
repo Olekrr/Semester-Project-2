@@ -1,4 +1,4 @@
-import { baseUrl } from "./baseUrl.js";
+import { baseUrl } from "./urlbase.js";
 
 export async function register(username, email, password, avatarUrl) {
   const response = await fetch(`${baseUrl}/auction/auth/register`, {

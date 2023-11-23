@@ -1,4 +1,5 @@
 import { register } from "../index.js";
+import { toggleForms } from "../../loginmodal/toggleform.js";
 
 export function registerFormListener() {
   const form = document.getElementById("registerForm");
@@ -11,6 +12,11 @@ export function registerFormListener() {
     try {
       const response = await register(username, email, password, avatarUrl);
       console.log("Registration Success:", response);
+      toggleForms();
+      const loginEmail = document.getElementById("loginEmail");
+      if (loginEmail) {
+        loginEmail.value = email;
+      }
     } catch (error) {
       console.error("Registration Error:", error);
     }
