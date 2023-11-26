@@ -119,5 +119,83 @@
         </div>
       </div>
     </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+          <div class="button-group">
+            <button class="btn icon-btn">
+              <img src="assets/marketplace.png" alt="Marketplace" />
+            </button>
+            <button class="btn icon-btn">
+              <img src="assets/activebids.png" alt="My Active Bids" />
+            </button>
+            <button class="btn icon-btn">
+              <img src="assets/mylistings.png" alt="My Auctions" />
+            </button>
+            <button class="btn icon-btn">
+              <img src="assets/createnewauction.png" alt="Create Auction" />
+            </button>
+            <button class="btn icon-btn">
+              <img src="assets/hotauctions.png" alt="Hot Auctions" />
+            </button>
+            <button class="btn icon-btn">
+              <img src="assets/profile.png" alt="Profile" />
+            </button>
+          </div>
+          <div class="content-container">
+            <div id="templateDisplay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="bidModal"
+      tabindex="-1"
+      aria-labelledby="bidModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bidModalLabel">Auction Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              id="bidModalImage"
+              src=""
+              alt="Auction Image"
+              class="img-fluid mb-3"
+            />
+            <h6>Description:</h6>
+            <p id="bidModalDescription"></p>
+            <p id="bidModalBids" class="fw-bold"></p>
+            <p id="bidModalEndDate" class="text-muted"></p>
+            <form id="bidForm">
+              <div class="mb-3">
+                <label for="bidAmount" class="form-label"
+                  >Your Bid Amount</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="bidAmount"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Place Bid</button>
+            </form>
+            <p>Bid History</p>
+            <div id="bidModalHistory"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

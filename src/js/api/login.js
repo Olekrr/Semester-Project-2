@@ -6,7 +6,16 @@ export async function login(email, password) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
-  return response.ok
-    ? await response.json()
-    : Promise.reject(await response.json());
+
+  if (!response.ok) {
+    throw new Error("Login failed");
+  }
+
+  const data = await response.json();
+  localStorage.setItem("authToken", data.accessToken);
+  localStorage.setItem("profileName", data.name);
+
+  window.location.reload();
+
+  return data;
 }
