@@ -13,5 +13,9 @@ export async function login(email, password) {
 
   const data = await response.json();
   localStorage.setItem("authToken", data.accessToken);
+  localStorage.setItem("profileName", data.name);
+
+  window.location.reload();
+
   return data;
 }
