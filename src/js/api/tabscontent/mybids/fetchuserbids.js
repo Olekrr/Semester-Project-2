@@ -1,4 +1,3 @@
-// fetchuserbids.js
 import { fetchData } from "../apiservice.js";
 
 export async function fetchUserBids(username) {

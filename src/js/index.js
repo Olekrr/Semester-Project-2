@@ -15,8 +15,5 @@ document.addEventListener("DOMContentLoaded", () => {
   loginFormListener();
   registerFormListener();
   setupHeader();
-
-  if (authToken) {
-    initializeTabs();
-  }
+  initializeTabs();
 });

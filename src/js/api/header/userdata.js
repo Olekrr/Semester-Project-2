@@ -3,7 +3,6 @@ import { fetchData } from "../tabscontent/apiservice.js";
 export async function getUserData() {
   const username = localStorage.getItem("profileName");
   if (!username) {
-    console.error("Username not found in local storage.");
     return null;
   }
 
