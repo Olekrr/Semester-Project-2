@@ -2,7 +2,7 @@ import { renderMarketplace } from "./marketplace.js";
 import { renderCreateAuctionForm } from "./createauction/renderauctionform.js";
 import { handleAuctionCreation } from "./createauction/auctioncreation.js";
 import { renderMyAuctions } from "./myauctions.js";
-import { renderUserProfile } from "./profile.js";
+import { renderUserProfile } from "./profile/profile.js";
 import { renderHotAuctions } from "./hotauctions.js";
 import { renderMyActiveBids } from "./mybids/renderuserbids.js";
 

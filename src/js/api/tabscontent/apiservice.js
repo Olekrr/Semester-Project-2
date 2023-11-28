@@ -2,6 +2,7 @@ import { baseUrl } from "../urlbase.js";
 
 export async function fetchData(endpoint, method = "GET", data = null) {
   const token = localStorage.getItem("authToken");
+
   const headers = {
     "Content-Type": "application/json",
   };
@@ -15,7 +16,7 @@ export async function fetchData(endpoint, method = "GET", data = null) {
     headers: headers,
   };
 
-  if (method === "POST" && data) {
+  if (data) {
     options.body = JSON.stringify(data);
   }
 
