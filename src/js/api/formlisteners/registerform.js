@@ -5,14 +5,24 @@ export function registerFormListener() {
   const form = document.getElementById("registerForm");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     const username = document.getElementById("registerUsername").value;
     const email = document.getElementById("registerEmail").value;
     const password = document.getElementById("registerPassword").value;
     const avatarUrl = document.getElementById("registerAvatarUrl").value;
+
+    if (!email.endsWith("@stud.noroff.no")) {
+      alert(
+        "Registration is only allowed with a @stud.noroff.no email address.",
+      );
+      return;
+    }
+
     try {
       const response = await register(username, email, password, avatarUrl);
       console.log("Registration Success:", response);
       toggleForms();
+
       const loginEmail = document.getElementById("loginEmail");
       if (loginEmail) {
         loginEmail.value = email;
