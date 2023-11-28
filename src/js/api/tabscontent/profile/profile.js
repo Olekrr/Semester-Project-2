@@ -1,5 +1,8 @@
-import { fetchData } from "./apiservice.js";
-import { loadModal } from "../../loginmodal/index.js";
+import { fetchData } from "../apiservice.js";
+import { renderProfileInfo } from "./profiledisplay.js";
+import { renderAvatarUpdateForm } from "./avatarupdateform.js";
+import { avatarUpdate } from "./eventlistener.js";
+import { loadModal } from "../../../loginmodal/loadform.js";
 
 export async function renderUserProfile() {
   const profileName = localStorage.getItem("profileName");
@@ -7,17 +10,10 @@ export async function renderUserProfile() {
 
   if (profileName) {
     const profile = await fetchData(`profiles/${profileName}`);
-
     if (profile) {
-      displayContainer.innerHTML = `
-        <div class="profile-container">
-          <img src="${profile.avatar}" alt="Avatar" class="profile-avatar">
-          <h3>${profile.name}</h3>
-          <p>Email: ${profile.email}</p>
-          <p>Credits: ${profile.credits}</p>
-          <p>Total Listings: ${profile._count.listings}</p>
-        </div>
-      `;
+      displayContainer.innerHTML =
+        renderProfileInfo(profile) + renderAvatarUpdateForm();
+      avatarUpdate(profileName);
     } else {
       displayContainer.innerHTML = "<p>Profile information not available.</p>";
     }
@@ -26,7 +22,6 @@ export async function renderUserProfile() {
       <p>Please log in to view your profile.</p>
       <button id="loginButton" class="btn btn-primary">Log In</button>
     `;
-
     document.getElementById("loginButton").addEventListener("click", loadModal);
   }
 }
