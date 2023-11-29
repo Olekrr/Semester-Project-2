@@ -7,9 +7,10 @@ export async function handleAuctionCreation() {
 
     const title = document.getElementById("auctionTitle").value;
     const description = document.getElementById("auctionDescription").value;
-    const media = document.getElementById("auctionMedia").value
-      ? [document.getElementById("auctionMedia").value]
-      : [];
+    const mediaInputs = form.querySelectorAll('[name="auctionMedia"]');
+    const media = Array.from(mediaInputs)
+      .map((input) => input.value)
+      .filter((url) => url !== "");
     const endsAt = document.getElementById("auctionEndsAt").value;
 
     try {
