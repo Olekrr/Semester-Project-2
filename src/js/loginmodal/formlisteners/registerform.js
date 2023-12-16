@@ -1,5 +1,7 @@
-import { register } from "../index.js";
-import { toggleForms } from "../../loginmodal/toggleform.js";
+import { register } from "../../api/index.js";
+import { toggleForms } from "../toggleform.js";
+import { handleError } from "../../utils/errorhandler.js";
+import { showFeedbackModal } from "../../utils/feedbackmodal.js";
 
 export function registerFormListener() {
   const form = document.getElementById("registerForm");
@@ -12,23 +14,32 @@ export function registerFormListener() {
     const avatarUrl = document.getElementById("registerAvatarUrl").value;
 
     if (!email.endsWith("@stud.noroff.no")) {
-      alert(
+      showFeedbackModal(
+        "Registration Error",
         "Registration is only allowed with a @stud.noroff.no email address.",
       );
       return;
     }
 
     try {
-      const response = await register(username, email, password, avatarUrl);
-      console.log("Registration Success:", response);
-      toggleForms();
+      await register(username, email, password, avatarUrl);
+      showFeedbackModal("Success", "Registration Successful");
 
+      toggleForms();
       const loginEmail = document.getElementById("loginEmail");
       if (loginEmail) {
         loginEmail.value = email;
       }
     } catch (error) {
-      console.error("Registration Error:", error);
+      if (error.name === "TypeError" && error.message === "Failed to fetch") {
+        handleError(new Error("Failed to fetch"));
+      } else {
+        const errorMessage =
+          error.errors?.[0]?.message ||
+          error.message ||
+          "Unknown registration error";
+        handleError(new Error(errorMessage));
+      }
     }
   });
 }

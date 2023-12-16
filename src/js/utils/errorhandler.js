@@ -4,23 +4,33 @@ import {
   serverErrorMessage,
   badRequestErrorMessage,
   serviceUnavailableMessage,
+  profileAlreadyExists,
+  unexpectedError,
 } from "./errormessages.js";
 
 export function handleError(error) {
-  console.error("Error: ", error);
-
-  if (error.message.includes("Failed to fetch")) {
+  if (
+    error.message === "Network Error" ||
+    error.message === "Failed to fetch" ||
+    error.name === "TypeError"
+  ) {
     showFeedbackModal("Network Error", networkErrorMessage());
-  } else if (error.message.includes("400")) {
-    showFeedbackModal("Invalid Data", badRequestErrorMessage());
-  } else if (error.message.includes("500")) {
-    showFeedbackModal("Server Error", serverErrorMessage());
-  } else if (error.message.includes("503")) {
-    showFeedbackModal("Service Unavailable", serviceUnavailableMessage());
+    return;
+  }
+
+  if (error.message) {
+    if (error.message.includes("Profile already exists")) {
+      showFeedbackModal("Registration Error", profileAlreadyExists());
+    } else if (error.message.includes("400")) {
+      showFeedbackModal("Invalid Data", badRequestErrorMessage());
+    } else if (error.message.includes("500")) {
+      showFeedbackModal("Server Error", serverErrorMessage());
+    } else if (error.message.includes("503")) {
+      showFeedbackModal("Service Unavailable", serviceUnavailableMessage());
+    } else {
+      showFeedbackModal("Error", unexpectedError());
+    }
   } else {
-    showFeedbackModal(
-      "Error",
-      "An unexpected error occurred. Please try again.",
-    );
+    showFeedbackModal("Error", unexpectedError());
   }
 }

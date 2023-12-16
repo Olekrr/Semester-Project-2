@@ -1,4 +1,4 @@
-import { baseUrl } from "../urlbase.js";
+import { baseUrl } from "./urlbase.js";
 
 export async function fetchData(endpoint, method = "GET", data = null) {
   const token = localStorage.getItem("authToken");
@@ -26,7 +26,9 @@ export async function fetchData(endpoint, method = "GET", data = null) {
     if (!response.ok) {
       const errorResponse = await response.json();
       console.error("API Error Response:", errorResponse);
-      throw new Error("Network response was not ok");
+      throw new Error(
+        errorResponse.errors[0].message || "Network response was not ok",
+      );
     }
     return await response.json();
   } catch (error) {

@@ -1,4 +1,6 @@
-import { fetchData } from "../apiservice.js";
+import { fetchData } from "../../apiservice.js";
+import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
+import { handleError } from "../../../utils/errorhandler.js";
 
 export async function submitBid(listingId, amount, modal) {
   try {
@@ -11,16 +13,13 @@ export async function submitBid(listingId, amount, modal) {
     );
 
     if (response) {
-      console.log("Bid successful:", response);
-      alert("Bid placed successfully!");
+      showFeedbackModal("Success", "Bid placed successfully!");
     } else {
-      console.error("Bid failed:", response);
-      alert("Failed to place bid.");
+      showFeedbackModal("Error", "Failed to place bid.");
     }
 
     modal.hide();
   } catch (error) {
-    console.error("Error submitting bid:", error);
-    alert("Error occurred while placing bid.");
+    handleError(error);
   }
 }

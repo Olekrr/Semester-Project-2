@@ -13,3 +13,11 @@ export function badRequestErrorMessage() {
 export function serviceUnavailableMessage() {
   return "Service Unavailable: The server is currently unable to handle the request. Please try again later.";
 }
+
+export function profileAlreadyExists() {
+  return "A profile with that username already exists";
+}
+
+export function unexpectedError() {
+  return "An unexpected error occurred. Please try again.";
+}

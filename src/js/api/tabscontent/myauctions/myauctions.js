@@ -1,6 +1,6 @@
-import { fetchData } from "./apiservice.js";
-import { loadModal } from "../../loginmodal/index.js";
-import { createListingCard } from "./listingcard.js";
+import { fetchData } from "../../apiservice.js";
+import { loadModal } from "../../../loginmodal/index.js";
+import { createListingCard } from "../listingcard.js";
 
 export async function renderMyAuctions() {
   const profileName = localStorage.getItem("profileName");

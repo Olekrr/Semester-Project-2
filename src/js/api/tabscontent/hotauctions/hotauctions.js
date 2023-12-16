@@ -1,6 +1,7 @@
-import { createListingCard } from "./listingcard.js";
-import { fetchData } from "./apiservice.js";
-import { attachAuctionViewEvent } from "./bidding/bidlistener.js";
+import { createListingCard } from "../listingcard.js";
+import { fetchData } from "../../apiservice.js";
+import { attachAuctionViewEvent } from "../bidding/bidlistener.js";
+import { handleError } from "../../../utils/errorhandler.js";
 
 export async function renderHotAuctions() {
   const displayContainer = document.getElementById("templateDisplay");
@@ -17,7 +18,7 @@ export async function renderHotAuctions() {
       .join("");
     attachAuctionViewEvent(hotListings);
   } catch (error) {
-    console.error("Error in fetching or processing hot auctions:", error);
+    handleError(error);
     displayContainer.innerHTML = "<p>Unable to fetch hot auctions.</p>";
   }
 }

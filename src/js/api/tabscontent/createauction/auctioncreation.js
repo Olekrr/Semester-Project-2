@@ -1,4 +1,4 @@
-import { fetchData } from "../apiservice.js";
+import { fetchData } from "../../apiservice.js";
 import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
 import { handleError } from "../../../utils/errorhandler.js";
 
