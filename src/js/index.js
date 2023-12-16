@@ -2,7 +2,7 @@ import { toggleListener, loadModal } from "./loginmodal/index.js";
 import {
   loginFormListener,
   registerFormListener,
-} from "./api/formlisteners/index.js";
+} from "./loginmodal/formlisteners/index.js";
 import { initializeTabs } from "./api/tabscontent/tabcontroller.js";
 import { setupHeader } from "./api/header/headersetup.js";
 

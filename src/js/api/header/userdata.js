@@ -1,4 +1,5 @@
-import { fetchData } from "../tabscontent/apiservice.js";
+import { fetchData } from "../apiservice.js";
+import { handleError } from "../../utils/errorhandler.js";
 
 export async function getUserData() {
   const username = localStorage.getItem("profileName");
@@ -15,7 +16,7 @@ export async function getUserData() {
       credits: profileData.credits,
     };
   } catch (error) {
-    console.error("Error fetching user data:", error);
+    handleError(error);
     return null;
   }
 }

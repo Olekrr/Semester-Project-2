@@ -1,4 +1,4 @@
-import { fetchData } from "../apiservice.js";
+import { fetchData } from "../../apiservice.js";
 import { renderProfileInfo } from "./profiledisplay.js";
 import { renderAvatarUpdateForm } from "./avatarupdateform.js";
 import { avatarUpdate } from "./eventlistener.js";

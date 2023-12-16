@@ -1,7 +1,8 @@
 import { createListingCard } from "../listingcard.js";
-import { fetchData } from "../apiservice.js";
+import { fetchData } from "../../apiservice.js";
 import { attachAuctionViewEvent } from "../bidding/bidlistener.js";
 import { loadModal } from "../../../loginmodal/index.js";
+import { handleError } from "../../../utils/errorhandler.js";
 
 export async function renderMyActiveBids() {
   const displayContainer = document.getElementById("templateDisplay");
@@ -25,7 +26,7 @@ export async function renderMyActiveBids() {
         displayContainer.innerHTML = "<p>No active bids found.</p>";
       }
     } catch (error) {
-      console.error("Error fetching active bids:", error);
+      handleError(error);
       displayContainer.innerHTML = "<p>Error fetching active bids.</p>";
     }
   } else {
@@ -33,7 +34,6 @@ export async function renderMyActiveBids() {
       <p>Please log in to view your active bids.</p>
       <button id="loginButton" class="btn btn-primary">Log In</button>
     `;
-
     document.getElementById("loginButton").addEventListener("click", loadModal);
   }
 }

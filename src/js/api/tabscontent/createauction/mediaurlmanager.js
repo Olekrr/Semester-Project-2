@@ -1,3 +1,5 @@
+import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
+
 export function attachMediaUrlEvent() {
   document.getElementById("addMediaUrl").addEventListener("click", () => {
     const mediaUrls = document.getElementById("mediaUrls");
@@ -12,7 +14,7 @@ export function attachMediaUrlEvent() {
       newInput.setAttribute("name", "auctionMedia");
       mediaUrls.insertBefore(newInput, mediaUrls.lastElementChild);
     } else {
-      alert("Limit of 5 images reached.");
+      showFeedbackModal("Limit Reached", "Limit of 5 images reached.");
     }
   });
 }

@@ -3,15 +3,15 @@ export function createAuctionFormHtml() {
         <form id="createAuctionForm">
             <div class="mb-3">
                 <label for="auctionTitle" class="form-label">Title</label>
-                <input type="text" class="form-control" id="auctionTitle" required>
+                <input type="text" class="form-control" id="auctionTitle" required minlength="3">
             </div>
             <div class="mb-3">
                 <label for="auctionDescription" class="form-label">Description</label>
-                <textarea class="form-control" id="auctionDescription"></textarea>
+                <textarea class="form-control" id="auctionDescription" required minlength="10"></textarea>
             </div>
             <div class="mb-3" id="mediaUrls">
                 <label class="form-label">Media URLs</label>
-                <input type="url" class="form-control mb-2" name="auctionMedia">
+                <input type="url" class="form-control mb-2" name="auctionMedia" required>
                 <button type="button" class="btn btn-secondary btn-sm" id="addMediaUrl">Add More Images</button>
             </div>
             <div class="mb-3">

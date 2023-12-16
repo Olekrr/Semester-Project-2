@@ -1,6 +1,8 @@
-import { fetchData } from "../apiservice.js";
+import { fetchData } from "../../apiservice.js";
+import { handleError } from "../../../utils/errorhandler.js";
+import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
 
-export async function avatarUpdate(profileName) {
+export function avatarUpdate(profileName) {
   document
     .getElementById("updateAvatarForm")
     .addEventListener("submit", async (event) => {
@@ -9,17 +11,16 @@ export async function avatarUpdate(profileName) {
 
       try {
         const updateData = { avatar: avatarUrl };
-        console.log(
-          `Updating avatar for ${profileName} with data:`,
-          updateData,
-        );
 
         await fetchData(`profiles/${profileName}/media`, "PUT", updateData);
-        alert("Avatar updated successfully!");
-        window.location.reload();
+        showFeedbackModal("Success", "Avatar updated successfully!");
+
+        const profilePicElement = document.querySelector(".profile-avatar");
+        if (profilePicElement) {
+          profilePicElement.src = avatarUrl;
+        }
       } catch (error) {
-        console.error("Error updating avatar:", error);
-        alert("Error occurred while updating avatar.");
+        handleError(error);
       }
     });
 }

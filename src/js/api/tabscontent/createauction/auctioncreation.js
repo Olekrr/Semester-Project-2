@@ -1,9 +1,16 @@
-import { fetchData } from "../apiservice.js";
+import { fetchData } from "../../apiservice.js";
+import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
+import { handleError } from "../../../utils/errorhandler.js";
 
 export async function handleAuctionCreation() {
   const form = document.getElementById("createAuctionForm");
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     const title = document.getElementById("auctionTitle").value;
     const description = document.getElementById("auctionDescription").value;
@@ -22,10 +29,11 @@ export async function handleAuctionCreation() {
       });
 
       if (response) {
-        console.log("Auction created:", response);
+        showFeedbackModal("Success", "Auction created successfully.");
+        form.reset();
       }
     } catch (error) {
-      console.error("Error creating auction:", error);
+      handleError(error);
     }
   });
 }
