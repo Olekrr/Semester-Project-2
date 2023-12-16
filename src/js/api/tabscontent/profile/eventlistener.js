@@ -2,7 +2,7 @@ import { fetchData } from "../../apiservice.js";
 import { handleError } from "../../../utils/errorhandler.js";
 import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
 
-export async function avatarUpdate(profileName) {
+export function avatarUpdate(profileName) {
   document
     .getElementById("updateAvatarForm")
     .addEventListener("submit", async (event) => {
@@ -14,7 +14,11 @@ export async function avatarUpdate(profileName) {
 
         await fetchData(`profiles/${profileName}/media`, "PUT", updateData);
         showFeedbackModal("Success", "Avatar updated successfully!");
-        window.location.reload();
+
+        const profilePicElement = document.querySelector(".profile-avatar");
+        if (profilePicElement) {
+          profilePicElement.src = avatarUrl;
+        }
       } catch (error) {
         handleError(error);
       }
