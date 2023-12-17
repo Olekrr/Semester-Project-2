@@ -1,21 +1,14 @@
-import { baseUrl } from "./urlbase.js";
+import { fetchData } from "./apiservice.js";
 
 export async function login(email, password) {
-  const response = await fetch(`${baseUrl}/auction/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
+  const loginData = { email, password };
 
-  if (!response.ok) {
-    throw new Error("Login failed");
-  }
+  const response = await fetchData("auth/login", "POST", loginData);
 
-  const data = await response.json();
-  localStorage.setItem("authToken", data.accessToken);
-  localStorage.setItem("profileName", data.name);
+  localStorage.setItem("authToken", response.accessToken);
+  localStorage.setItem("profileName", response.name);
 
   window.location.reload();
 
-  return data;
+  return response;
 }
