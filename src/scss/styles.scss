@@ -1,45 +1,324 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-.button-group {
-  display: flex;
+// Header Styles
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.navbar-text {
+  flex-grow: 1;
+  font-size: 1.5rem;
+}
+
+// Tabs Styles
+.button-group-vertical,
+.button-group-horizontal {
   padding: 0;
-  background-color: #f8f9fa;
-  justify-content: stretch;
+  margin: 0;
 
   .btn {
-    flex-grow: 1;
-    border: 2px solid #dddddd;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     margin: 0;
     border-radius: 0;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     &.active {
       background-color: #ffffff;
-      border: 2px solid #000000;
+      border: 2px solid #003f9f;
       border-bottom: 2px solid #ffffff;
       z-index: 2;
       position: relative;
     }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid #000000;
+    }
+
+    img:hover {
+      box-shadow: #003f9f;
+    }
+
+    h2 {
+      margin-top: 10px;
+    }
   }
 }
 
+// Horizontal Button Group (larger screens)
+.button-group-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  font-size: 0.8rem;
+
+  .btn {
+    flex-grow: 1;
+
+    &.active {
+      border-radius: 10px 10px 0px 0px;
+    }
+  }
+  .btn:first-child {
+    margin-left: -1px;
+  }
+  h2 {
+    font-size: 0.9rem;
+  }
+}
+
+// Vertical Button Group (smaller screens)
+.button-group-vertical {
+  display: flex;
+  flex-direction: column;
+
+  .btn {
+    width: 100%;
+    border-right: 2px solid transparent;
+
+    &.active {
+      border-radius: 10px 0px 0px 10px;
+    }
+  }
+}
+
+// Content Container Styles
 .content-container {
-  border: 2px solid #000000;
+  border: 2px solid #003f9f;
   padding: 20px;
   margin-top: -2px;
   background-color: #ffffff;
   border-radius: 0.25rem;
   position: relative;
   z-index: 1;
+  max-height: 700px;
+  overflow-y: auto;
+
+  .object-fit-cover {
+    object-fit: cover;
+  }
+}
+@media (max-width: 768px) {
+  .mobile-tab-buttons {
+    padding-right: 0px;
+  }
+
+  .mobile-content-container {
+    padding-left: 0px;
+
+    .mobile-inner {
+      max-height: 494px;
+      margin-top: 0.5px;
+    }
+  }
 }
 
-.icon-btn {
-  img {
+.button-group-vertical {
+  .btn {
+    padding: 5px;
+    font-size: 0.8rem;
+
+    img {
+      max-width: 40px;
+      height: auto;
+    }
+
+    h2 {
+      margin-top: 5px;
+      font-size: 0.8rem;
+    }
+  }
+
+  .btn.active {
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #003f9f;
+    margin-right: -2px;
+  }
+}
+
+.content-container {
+  border-left: 2px solid #003f9f;
+  margin-left: -2px;
+}
+@media (max-width: 352px) {
+  .mobile-content-container .mobile-inner {
+    max-height: 510px;
+  }
+}
+// Profile Container Styles
+.profile-container,
+.avatar-update-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #0000001a;
+  max-width: 90%;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .profile-avatar {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #003f9f;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 5px;
+
+    strong {
+      font-weight: bold;
+    }
+  }
+}
+
+.avatar-update-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .form-control {
     width: 100%;
-    height: auto;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .btn-primary {
+    margin-top: 10px;
+  }
+}
+
+// Auction Cards Styles
+.card {
+  box-shadow: 0 4px 8px #0000001a;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px #00000033;
+  }
+  .carousel-image-container,
+  .card-img-top {
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .carousel-inner,
+  .card-img-top {
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .card-body {
+    .card-title {
+      font-size: 1.25rem;
+    }
+
+    .card-text {
+      color: #333;
+      margin-bottom: 10px;
+
+      small {
+        color: #666;
+      }
+    }
+
+    .view-auction-button {
+      background-color: #007bff;
+      color: #ffffff;
+      &:hover {
+        background-color: darken(#007bff, 10%);
+      }
+    }
+  }
+}
+
+// Bid Modal Styles
+.modal-content {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  .modal-header {
+    background-color: #000000;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    .modal-title {
+      font-weight: bold;
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+  }
+
+  .modal-body {
+    padding: 20px;
+
+    img {
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h6 {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    #bidForm {
+      background-color: #ffffff;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      background-color: #28a745;
+      &:hover {
+        background-color: darken(#28a745, 10%);
+      }
+    }
   }
 }

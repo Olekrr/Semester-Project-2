@@ -7,12 +7,19 @@ import { renderHotAuctions } from "./hotauctions/hotauctions.js";
 import { renderMyActiveBids } from "./mybids/renderuserbids.js";
 
 export function initializeTabs() {
-  const buttons = document.querySelectorAll(".button-group .btn");
+  const buttons = document.querySelectorAll(
+    ".button-group-vertical .btn, .button-group-horizontal .btn",
+  );
   const profileName = localStorage.getItem("profileName");
 
   buttons.forEach((button) => {
     button.addEventListener("click", function () {
-      buttons.forEach((btn) => btn.classList.remove("active"));
+      document
+        .querySelectorAll(
+          ".button-group-vertical .btn, .button-group-horizontal .btn",
+        )
+        .forEach((btn) => btn.classList.remove("active"));
+
       this.classList.add("active");
 
       const tabName = this.querySelector("img").alt;

@@ -20,20 +20,16 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img
-            src="assets/logo.png"
-            alt="Logo"
-            class="d-inline-block align-text-top"
-          />
-          Welcome to Noroff Auctions
+          <img src="assets/logo.png" alt="Logo" class="logo" />
         </a>
-        <div class="d-flex align-items-center">
-          <span id="userCredits" class="me-3"></span>
+        <h1 class="navbar-text ms-3">Welcome to Noroff Auctions</h1>
+        <div class="ms-auto d-flex align-items-center">
+          <span id="userCredits" class="me-3 badge bg-primary"></span>
           <img
             id="userProfilePic"
             src=""
             alt="Profile Pic"
-            class="rounded-circle me-3"
+            class="rounded-circle me-3 profile-pic"
           />
           <button id="logoutButton" class="btn btn-outline-danger">
             Logout
@@ -41,6 +37,7 @@
         </div>
       </div>
     </nav>
+
     <div
       class="modal fade"
       id="loginRegisterModal"
@@ -50,7 +47,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modalTitle">Login</h5>
+            <p class="modal-title" id="modalTitle">Login</p>
             <button
               type="button"
               class="btn-close"
@@ -141,33 +138,100 @@
     </div>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-12 col-md-8 offset-md-2">
-          <div class="button-group">
-            <button class="btn icon-btn">
-              <img src="assets/marketplace.png" alt="Marketplace" />
+        <div class="col-12 d-none d-md-flex">
+          <div class="button-group-horizontal">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img
+                class="tab-button"
+                src="assets/marketplace.png"
+                alt="Marketplace"
+              />
+              <h2>Marketplace</h2>
             </button>
-            <button class="btn icon-btn">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
               <img src="assets/activebids.png" alt="My Active Bids" />
+              <h2>Active Bids</h2>
             </button>
-            <button class="btn icon-btn">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
               <img src="assets/mylistings.png" alt="My Auctions" />
+              <h2>My Listings</h2>
             </button>
-            <button class="btn icon-btn">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
               <img src="assets/createnewauction.png" alt="Create Auction" />
+              <h2>Create Auctions</h2>
             </button>
-            <button class="btn icon-btn">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
               <img src="assets/hotauctions.png" alt="Hot Auctions" />
+              <h2>Hot Auctions</h2>
             </button>
-            <button class="btn icon-btn">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
               <img src="assets/profile.png" alt="Profile" />
+              <h2>Profile</h2>
             </button>
           </div>
-          <div class="content-container">
-            <div id="templateDisplay"></div>
+        </div>
+
+        <div class="col-4 d-md-none mobile-tab-buttons">
+          <div class="button-group-vertical">
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img src="assets/marketplace.png" alt="Marketplace" />
+              <h2>Marketplace</h2>
+            </button>
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img src="assets/activebids.png" alt="My Active Bids" />
+              <h2>Active Bids</h2>
+            </button>
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img src="assets/mylistings.png" alt="My Auctions" />
+              <h2>My Listings</h2>
+            </button>
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img src="assets/createnewauction.png" alt="Create Auction" />
+              <h2>Create Auctions</h2>
+            </button>
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img src="assets/hotauctions.png" alt="Hot Auctions" />
+              <h2>Hot Auctions</h2>
+            </button>
+            <button
+              class="btn icon-btn d-flex flex-column align-items-center text-center"
+            >
+              <img src="assets/profile.png" alt="Profile" />
+              <h2>Profile</h2>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-8 col-md-12 mobile-content-container">
+          <div class="content-container mobile-inner">
+            <div class="row" id="templateDisplay"></div>
           </div>
         </div>
       </div>
     </div>
+
     <div
       class="modal fade"
       id="bidModal"
@@ -178,7 +242,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="bidModalLabel">Auction Details</h5>
+            <p class="modal-title" id="bidModalLabel">Auction Details</p>
             <button
               type="button"
               class="btn-close"
@@ -187,13 +251,9 @@
             ></button>
           </div>
           <div class="modal-body">
-            <img
-              id="bidModalImage"
-              src=""
-              alt="Auction Image"
-              class="img-fluid mb-3"
-            />
-            <h6>Description:</h6>
+            <div id="bidModalImageContainer" class="img-fluid mb-3"></div>
+
+            <p>Description:</p>
             <p id="bidModalDescription"></p>
             <p id="bidModalBids" class="fw-bold"></p>
             <p id="bidModalEndDate" class="text-muted"></p>
@@ -228,7 +288,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="feedbackModalLabel">Feedback</h5>
+            <p class="modal-title" id="feedbackModalLabel">Feedback</p>
             <button
               type="button"
               class="btn-close"
