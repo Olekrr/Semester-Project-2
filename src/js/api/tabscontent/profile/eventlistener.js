@@ -1,6 +1,8 @@
 import { fetchData } from "../../apiservice.js";
 import { handleError } from "../../../utils/errorhandler.js";
 import { showFeedbackModal } from "../../../utils/feedbackmodal.js";
+import { refreshHeader } from "../../header/headersetup.js";
+import { renderUserProfile } from "./profile.js";
 
 export function avatarUpdate(profileName) {
   document
@@ -11,14 +13,11 @@ export function avatarUpdate(profileName) {
 
       try {
         const updateData = { avatar: avatarUrl };
-
         await fetchData(`profiles/${profileName}/media`, "PUT", updateData);
         showFeedbackModal("Success", "Avatar updated successfully!");
 
-        const profilePicElement = document.querySelector(".profile-avatar");
-        if (profilePicElement) {
-          profilePicElement.src = avatarUrl;
-        }
+        refreshHeader();
+        renderUserProfile();
       } catch (error) {
         handleError(error);
       }
