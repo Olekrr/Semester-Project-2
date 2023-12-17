@@ -6,15 +6,16 @@ export function renderCreateAuctionForm() {
   const profileName = localStorage.getItem("profileName");
   const displayContainer = document.getElementById("templateDisplay");
 
+  displayContainer.innerHTML = '<h2 class="tab-heading">Create Auction</h2>';
+
   if (profileName) {
-    displayContainer.innerHTML = createAuctionFormHtml();
+    displayContainer.innerHTML += createAuctionFormHtml();
     attachMediaUrlEvent();
   } else {
-    displayContainer.innerHTML = `
+    displayContainer.innerHTML += `
             <p>Please log in to create auctions.</p>
             <button id="loginButton" class="btn btn-primary">Log In</button>
         `;
-
     document.getElementById("loginButton").addEventListener("click", loadModal);
   }
 }
